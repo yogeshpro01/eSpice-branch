@@ -229,7 +229,70 @@ body{
 	border-radius: 50px
 }
 
+.examples{
+	margin-top: 40px;
+	height:70vh ;
+	width: 100%;
+	margin-top: 50px;
+	margin-left:  100px;
+}
 
+.exhead{
+	font-size: 35px;
+	font-family: open sans;
+	color: #222;
+}
+
+.line2{
+	width:160px ;
+	height: 2px;
+	background: #222;
+	border-radius: 50px;
+}
+
+.ex{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 90%;
+	margin-left: -60px;
+	padding-bottom: 50px;
+}
+
+.exbl{
+	width:500px ;
+	background:#222 ;
+	height: 200px;
+	position: relative;
+	margin-top:50px ;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: open sans;
+}
+
+.t{
+	margin: 20px 70px 0 70px;
+}
+
+.t2{
+	margin: 20px 70px 0 70px;
+	font-size: 13px	;
+}
+
+.extop{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 40px;
+	background: -webkit-gradient(linear, left top, right top, color-stop(0, #21C4FF), color-stop(100, #5C6CFF));
+	font-family: open sans;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 @media(max-width: 980px){
 	.headings{
