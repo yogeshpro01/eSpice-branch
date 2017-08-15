@@ -55,6 +55,7 @@ bool validate(char *code) {
         }
         if ( *code == '[' ) ct++;
         if ( *code == ']' ) ct--;
+        code++;
     }
     return ct == 0 ? 1 : 0;
 }
@@ -113,6 +114,7 @@ node **parse(char *code) {
         } else {
             fl = 0;
         }
+        code++;
     }
     return &pt;
 }
