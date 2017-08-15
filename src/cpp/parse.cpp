@@ -56,7 +56,7 @@ bool validate(char *code) {
         if ( *code == '[' ) ct++;
         if ( *code == ']' ) ct--;
     }
-    return !ct ? 1 : 0;
+    return ct == 0 ? 1 : 0;
 }
 
 
