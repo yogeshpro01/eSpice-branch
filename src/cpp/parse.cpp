@@ -41,12 +41,12 @@ char str[8] = {'.' , ',' , '+' , '-' , '<' , '>' , '[' , ']'};
 */
 
 
-bool validate(char *code) {
+bool validate(char *code, int sz) {
     for ( int i = 0; i < 8; i++ ) {
         mp[str[i]] = 1;
     }
-    int ct = 0;
-    while ( *code != '\0' ) {
+    int ct = 0, x = 0;
+    while ( *code != '\0' && x < sz ) {
         if ( !mp[*code] ) {
             return 0;
         }
@@ -55,7 +55,7 @@ bool validate(char *code) {
         }
         if ( *code == '[' ) ct++;
         if ( *code == ']' ) ct--;
-        code++;
+        code++; x++;
     }
     return ct == 0 ? 1 : 0;
 }
@@ -84,13 +84,14 @@ bool validate(char *code) {
 */
 
 
-node **parse(char *code) {
-    if ( !validate(code) ) {
+node **parse(char *code, int sz) {
+    char *c2 = code;
+    if ( !validate(c2 , sz) ) {
         return NULL;
     }
     q = new node; pt = new node;
-    int fl = 0, st = 0;
-    while ( *code != '\0' ) {
+    int fl = 0, st = 0, x = 0;
+    while ( *code != '\0' && x < sz ) {
         t = new node;
         t->c = *code; t->l = NULL; t->r = NULL;
         if ( !st ) {
@@ -114,7 +115,7 @@ node **parse(char *code) {
         } else {
             fl = 0;
         }
-        code++;
+        code++; x++;
     }
     return &pt;
 }

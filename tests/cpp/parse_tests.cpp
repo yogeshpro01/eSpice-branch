@@ -22,8 +22,8 @@ char str5[16] = {'+' , '+' , '[' , '-' , '>' , '+' , '['
                 , '-' , '+' , '-' , ']' , '<' , ']' , '-' , '-' , '>'};
 
 
-bool test_case(char *code) {
-    node **ptr = parse(code);
+bool test_case(char *code , int sz) {
+    node **ptr = parse(code , sz);
     if ( ptr == NULL ) {
         return 0;
     }
@@ -33,15 +33,14 @@ bool test_case(char *code) {
 void tests() {
     int pass = 0, fail = 0;
 
-    if ( !test_case(str1) ) {
+    if ( !test_case(str1 , 4) ) {
         printf("Case 1: OK \n");
         pass++;
     } else {
         printf("Case 1: FAIL \n");
         fail++;
     }
-
-    if ( !test_case(str2) ) {
+    if ( !test_case(str2 , 5) ) {
         printf("Case 2: OK \n");
         pass++;
     } else {
@@ -49,7 +48,7 @@ void tests() {
         fail++;
     }
 
-    if ( !test_case(str3) ) {
+    if ( !test_case(str3 , 5) ) {
         printf("Case 3: OK \n");
         pass++;
     } else {
@@ -57,15 +56,14 @@ void tests() {
         fail++;
     }
 
-    if ( test_case(str4) ) {
+    if ( test_case(str4 , 7) ) {
         printf("Case 4: OK \n");
         pass++;
     } else {
         printf("Case 4: FAIL \n");
         fail++;
     }
-
-    if ( test_case(str5) ) {
+    if ( test_case(str5 , 16) ) {
         printf("Case 5: OK \n");
         pass++;
     } else {
