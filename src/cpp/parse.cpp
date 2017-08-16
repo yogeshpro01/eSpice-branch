@@ -5,6 +5,9 @@
 #include<map>
 
 
+// Copyright 2017 Yogesh Aggarwal
+
+
 node *q , *t , *tx , *pt;
 
 
@@ -84,7 +87,7 @@ bool validate(char *code, int sz) {
 */
 
 
-node **parse(char *code, int sz) {
+node *parse(char *code, int sz) {
     char *c2 = code;
     if ( !validate(c2 , sz) ) {
         return NULL;
@@ -117,6 +120,6 @@ node **parse(char *code, int sz) {
         }
         code++; x++;
     }
-    return &pt;
+    return pt;
 }
 
