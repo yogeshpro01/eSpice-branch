@@ -1,5 +1,6 @@
 #include "eval.hpp"
-
+#include "parse.hpp"
+#include "parse.cpp"
 
 /*
     Copyright 2017 Yogesh Aggarwal
@@ -14,15 +15,14 @@ std::vector<int>v;
 
 std::string stin = "" , stout = "" , stx = "";
 
-int cur_size = 10 , mxptr = 0;
 
-int command(node * , char , int);
+int command(node * , char , int, int, int);
 
-void loop(node *st, int ptr) {
+void loop(node *st, int ptr, int mxptr, int cur_size) {
     while ( v[ptr] ) {
         node *x = st; int cur = ptr;
         while ( x->c != ']' ) {
-            cur = command(x , x->c , cur);
+            cur = command(x , x->c , cur, mxptr , cur_size);
             x = x->r;
         }
     }
@@ -34,7 +34,7 @@ void loop(node *st, int ptr) {
 */
 
 
-void gr_table(int mxptr) {
+void gr_table(int mxptr , int cur_size) {
     if ( mxptr + 1 >= cur_size ) {
         v.resize(2*cur_size);
     } else if ( mxptr <= 1/4*cur_size ) {
@@ -42,9 +42,9 @@ void gr_table(int mxptr) {
     }
 }
 
-int command(node *cur, char c, int ptr) {
+int command(node *cur, char c, int ptr, int mxptr, int cur_size) {
     mxptr = std::max(ptr , mxptr);
-    gr_table(mxptr);
+    gr_table(mxptr , cur_size);
     if ( c == '+' ) {
         v[ptr]++;
         return ptr;
@@ -72,20 +72,20 @@ int command(node *cur, char c, int ptr) {
         return ptr;
     }
     if ( c == '[' ) {
-        loop(cur->l , ptr);
+        loop(cur->l , ptr, mxptr, cur_size);
         return ptr;
     }
 }
 
 void evaluate(node *cmd) {
     node *cur = cmd;
-    int ptr = 0; mxptr = 0; cur_size = 0;
+    int ptr = 0 , mxptr = 0 , cur_size = 0;
     v.clear();
     v.resize(10);
     stin = "" ; stout = ""; stx = "";
     while ( cur->r != NULL && cur->r != NULL ) {
-        ptr = command(cur , cur->c , ptr);
+        ptr = command(cur , cur->c , ptr, mxptr, cur_size);
         cur = cur->r;
     }
-    command(cur , cur->c , ptr);
+    command(cur , cur->c , ptr, mxptr , cur_size);
 }
