@@ -1,3 +1,8 @@
+/*
+ * JS program for parsing and evaluating Brainfuck code
+ * (c) Kabir Goel
+ */
+
 // Rather than hardcoding the value of each token, use constants
 // This allows me to change the syntax of the language easily
 const TOKEN_INCR       = '+';
@@ -11,6 +16,9 @@ const TOKEN_PRINT      = '.';
 
 /*
  * Parse a blob of Brainfuck code
+ * @param {string} blob The Brainfuck code
+ * @returns {object} Object with a res and error: if error != ''
+ *                   don't read res
  */
 function parse(blob) {
   let res = [];
@@ -20,6 +28,9 @@ function parse(blob) {
         let innerContent = '';
         let balance = 0;
         do {
+          // the following if will always exec on the first iteration because
+          // we never incremented i after the previous if so we're still
+          // on the same token
           if (blob[i] == TOKEN_LOOP_START) {
             balance++;
             if (balance > 1) {
@@ -52,6 +63,14 @@ function parse(blob) {
   return { 'res': res, 'error': '' }
 }
 
+/*
+ * Evaluate a blob of Brainfuck code
+ * @param {string} blob The Brainfuck code
+ * @returns {object} Object with some results and error. Results include
+ *                   stdout, ptrPos (data pointer position) and
+ *                   mem (program memory). If error != '' don't read other
+ *                   properties.
+ */
 function eval(blob) {
   // generate 30000 cells
   let mem = Array.apply(null, Array(30000)).map(Number.prototype.valueOf, 0);
@@ -83,7 +102,11 @@ function eval(blob) {
         break;
       case TOKEN_LOOP_START:
         balance = 0
+        // if the current cell is 0, skip to the end of the loop
+        // i.e. don't loop
         if (mem[datPtr] == 0) {
+          // skip to the end of the loop
+          // balance ensures that nested loops don't mess things up
           do {
             if (blob[i] == TOKEN_LOOP_START) {
               balance++;
@@ -115,7 +138,7 @@ function eval(blob) {
         break;
     }
   }
-  return { 'ptrPos': datPtr, 'stdout': programOutput, 'mem': mem }
+  return { 'ptrPos': datPtr, 'stdout': programOutput, 'mem': mem, 'error': '' }
 }
 
 module.exports = {

@@ -9,6 +9,7 @@ const eval = interpreter.eval;
 assert.deepEqual(parse('++,.-').res, ['+', '+', ',', '.', '-'], 'test primitive operators');
 assert.deepEqual(parse('[..++><,-]').res, [['.', '.', '+', '+', '>', '<', ',', '-']], 'test loop');
 assert.deepEqual(parse('[.,[+,.[]]]').res, [['.', ',', ['+', ',', '.', []]]], 'test nested loop');
+assert.equal(parse('++[.[]').error, 'unterminated loop');
 
 
 /*
@@ -17,6 +18,7 @@ assert.deepEqual(parse('[.,[+,.[]]]').res, [['.', ',', ['+', ',', '.', []]]], 't
 assert.equal(eval('+++').mem[0], 3, 'test memory');
 assert.equal(eval('++>>><').ptrPos, 2, 'test memory navigation');
 assert.equal(eval('++++++++[>+++++++++<-]>.').stdout[0], 'H', 'test stdout');
+assert.equal(eval('[[]').error, 'unterminated loop');
 assert.deepEqual(
   eval(
     '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.\
