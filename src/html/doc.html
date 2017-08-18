@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="doc.css">
+	<link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+</head>
+<body>
+<div class="header"><br/>&nbsp;
+&nbsp;&nbsp;&nbsp;
+<div id="meranav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#com">Commands</a>
+  <a href="#exp">Examples</a>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+<h1 class = "heading one">
+	BrainFuck
+</h1>
+<h2 class = "heading subone">The esoteric language</h2>
+</div>
+<div id= "sub-one"></div>
+<h2 class="heading two">
+	<font class = "under" id = "com">Commands</font>
+</h2>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: >" >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The > is used to increase the pointer by 1. It's equivalent to ptr++ in C.
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+       <font class = "ftwo">>></font></br></br>
+       <font class = "fone">Points to the second address.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: <" >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The < is used to decrease the pointer by 1. It's equivalent to ptr-- in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>>>><<<</font></br></br>
+			<font class = "fone">Points to the first address.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: +" >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The + is used to increase the value on the current pointer. It's equivalent to ++*ptr in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>++</font></br></br>
+		 <font class = "fone">Sets the value 2 at the first address.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: -" >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The - is used to decrease the value on the current pointer. It's equivalent to --*ptr in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>++++---</font></br></br>
+		<font class = "fone">Sets the value 1 at the first address.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: ." >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The . is used to print the current value on the current pointer. putchar(*ptr) in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>>++-.</font></br></br>
+	 <font class = "fone">Prints 2 converted to char as per AASCI code.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: ," >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The , is used to input a character and store it on the current pointer. *ptr=getchar() in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>>,.</font></br></br>
+	<font class = "fone">Inputs a character, stores it and prints it.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: [" >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The [ is used to initiate a loop. It's equivalent to while(*ptr){ in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>++++[-]</font></br></br>
+ <font class = "fone">Creates a loop which runs for four times.</font><br/>
+
+    </div>
+</div>
+<div class = "boxone line">
+	<h2 class = "heading three">
+		< "func: ]" >
+	</h2>
+    <h2 class = "heading four">
+    	About
+    </h2>
+    <h3 class = "heading five">
+    	The ] is used to terminate the definition of the loop. It's equivalent to } in C
+    </h3>
+     <h2 class = "heading six">
+    	Usage
+    </h2>
+    <div class = "small">
+    <h3 class = "heading seven">
+			<font class = "ftwo">>++++[-]</font></br></br>
+ <font class = "fone">Creates a loop which runs for four times.</font><br/>
+
+    </div>
+</div>
+<h2 class="heading eight">
+	<font class = "under" id = "exp">Examples</font>
+	</h2>
+	<div class = "boxtwo line">
+	<h2 class = "ten">Adding 2 and 5</h2>
+	<h2 class = "heading nine">
+    	Input
+    </h2>
+    <div class = "small-two">
+    <h3 class = "heading seven">
+       <font class = "fone" >++>+++++[<+>-]++++++++[<++++++>-]<.</font>
+    </div>
+      <h2 class = "heading nine">
+    	Output
+    </h2>
+      <div class = "small-two">
+    <h3 class = "heading seven">
+       <font class = "ftwo">7</font>
+    </div>
+</div>
+	<div class = "boxtwo line">
+	<h2 class = "ten">Hello World Program</h2>
+	<h2 class = "heading nine">
+    	Input
+    </h2>
+    <div class = "small-two">
+    <h3 class = "heading seven">
+       <font class = "fone">++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.</font>
+    </div>
+      <h2 class = "heading nine">
+    	Output
+    </h2>
+      <div class = "small-two">
+    <h3 class = "heading seven">
+       <font class = "ftwo">Hello World!</font>
+    </div>
+</div>
+<footer class= "foot">
+	<h2 class = "heading last">&copy;BrainFuck</h2>
+</footer>
+<script>
+function openNav() {
+    document.getElementById("meranav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("meranav").style.width = "0";
+}
+</script>
+</body>
+</html>
