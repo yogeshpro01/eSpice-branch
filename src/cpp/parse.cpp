@@ -1,8 +1,4 @@
 #include "parse.hpp"
-#include<iostream>
-#include<stdlib.h>
-#include<stack>
-#include<map>
 
 
 // Copyright 2017 Yogesh Aggarwal
@@ -59,27 +55,27 @@ int skp(char code) {
 }
 
 bool val_sp(char *code, int sz, int cur) {
-    if ( *code == 's' ) {
+     if ( *code == 's' ) {
         if ( cur + 1 < sz ) {
             if ( *(code+1) == 'r' || *(code+1) == 'q' ){
                 return 1;
             }
         }
-    } else if ( *code == 'f' ) {
+     } else if ( *code == 'f' ) {
         if ( cur + 3 < sz ) {
             if ( *(code+1) == 'a' && *(code+2) == 'c' && *(code+3) == 't' ) {
                 return 1;
             }
-        }
-    } else if ( *code == 'm' || *code == 'd' || *code == 'e' ) {
-        if ( cur + 3 < sz ) {
+       }
+     } else if ( *code == 'm' || *code == 'd' || *code == 'e' ) {
+         if ( cur + 3 < sz ) {
             if ( *(code+1) == 'v' ) {
                 if ( cm(*(code+2)) && cm(*(code+3)) ) {
-                    return 1;
-                }
+                     return 1;
+               }
             } else {
                 if ( cm(*(code+1)) && cm(*(code+2)) && cm(*(code+3)) ) {
-                    return 1;
+                     return 1;
                 }
             }
         }
@@ -97,8 +93,8 @@ bool validate(char *code, int sz) {
     }
     int ct = 0, x = 0;
     while ( *code != '\0' && x < sz ) {
-        if ( !mp[*code] && ! mp2[*code]) {
-            return 0;
+        if ( !mp[*code] && ! mp2[*code] ) {
+             return 0;
         }
         if ( mp2[*code] ) {
             if ( !val_sp(code , sz, x) ) return 0;
