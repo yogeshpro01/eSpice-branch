@@ -4,11 +4,6 @@
 #include "parse.hpp"
 #include "parse.cpp"
 
-#include<stdio.h>
-#include<vector>
-#include<algorithm>
-#include<string>
-#include<math.h>
 
 int command(node * , char , int, int, int);
 void loop(node *st, int ptr, int mxptr, int cur_size);
