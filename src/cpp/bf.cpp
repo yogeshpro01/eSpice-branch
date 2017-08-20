@@ -1,8 +1,10 @@
 #include "eval.cpp"
+#include "parse.hpp"
 
 #include<iostream>
 #include<stdlib.h>
 #include<thread>
+#include<string>
 
 using namespace std;
 using namespace std::this_thread;
@@ -84,7 +86,7 @@ void cmds() {
                 break;
             case 3:
                 ph("+");
-                printf("The + is used to increase the value on the current pointer. \n");
+                printf("The + is used to increase the value on the current pointer. It's equivalent to ++*ptr in C\n");
                 printf("Example: >++ sets the value 2 at the first address. \n");
                 pe();
                 break;
