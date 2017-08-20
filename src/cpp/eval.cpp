@@ -1,6 +1,5 @@
 #include "eval.hpp"
-#include "parse.hpp"
-#include "parse.cpp"
+
 
 /*
     Copyright 2017 Yogesh Aggarwal
@@ -15,6 +14,13 @@ std::vector<int>v;
 
 std::string stin = "" , stout = "" , stx = "";
 
+int fact(int n) {
+    return !n ? 1 : n*fact(n-1);
+}
+
+int pow(int base, int exp) {
+    return !exp ? 1 : base*pow(base,exp-1);
+}
 
 int command(node * , char , int, int, int);
 
@@ -66,7 +72,7 @@ int command(node *cur, char c, int ptr, int mxptr, int cur_size) {
     }
     if ( c == ',' ) {
         char l;
-        scanf("%c" , &l);
+        scanf("%c \n" , &l);
         stin += l;
         v[ptr] = l;
         return ptr;
@@ -77,6 +83,39 @@ int command(node *cur, char c, int ptr, int mxptr, int cur_size) {
     }
 }
 
+void com_sp(node *cur , int ptr , int mxptr , int cur_size) {
+    if ( cur->fc[0] == 's' && cur->fc[1] == 'r' ) {
+        v[ptr] = v[ptr]*v[ptr];
+    }
+    if ( cur->fc[0] == 's' && cur->fc[1] == 'q' ) {
+        v[ptr] = floor(sqrt(v[ptr]));
+    }
+    if ( cur->fc[0] == 'f' && cur->fc[1] == 'a' && cur->fc[2] == 'c' && cur->fc[3] == 't' ) {
+        v[ptr] = fact(v[ptr]);
+    }
+    if ( cur->fc[0] == 'm' ) {
+        mxptr = std::max(cur->a , mxptr); mxptr = std::max(cur->b , mxptr); mxptr = std::max(cur->cs , mxptr);
+        gr_table(mxptr , cur_size);
+        v[cur->cs] = v[cur->a]*v[cur->b];
+    }
+    if ( cur->fc[0] == 'd' ) {
+        mxptr = std::max(cur->a , mxptr); mxptr = std::max(cur->b , mxptr); mxptr = std::max(cur->cs , mxptr);
+        gr_table(mxptr , cur_size);
+        v[cur->cs] = v[cur->a]/v[cur->b];
+    }
+    if ( cur->fc[0] == 'e' ) {
+        mxptr = std::max(cur->a , mxptr); mxptr = std::max(cur->b , mxptr); mxptr = std::max(cur->cs , mxptr);
+        gr_table(mxptr , cur_size);
+        v[cur->cs] = pow(v[cur->a] , v[cur->b]);
+    }
+    if ( cur->fc[0] == 'm' && cur->fc[1] == 'v' ) {
+        mxptr = std::max(cur->a , mxptr); mxptr = std::max(cur->b , mxptr);
+        gr_table(mxptr , cur_size);
+        v[cur->b] = v[cur->a];
+        v[cur->a] = 0;
+    }
+}
+
 void evaluate(node *cmd) {
     node *cur = cmd;
     int ptr = 0 , mxptr = 0 , cur_size = 0;
@@ -84,8 +123,16 @@ void evaluate(node *cmd) {
     v.resize(10);
     stin = "" ; stout = ""; stx = "";
     while ( cur->r != NULL && cur->r != NULL ) {
-        ptr = command(cur , cur->c , ptr, mxptr, cur_size);
+        if ( cur->sp == 1 ) {
+            com_sp(cur , ptr , mxptr , cur_size);
+        } else {
+            ptr = command(cur , cur->c , ptr , mxptr , cur_size);
+        }
         cur = cur->r;
     }
-    command(cur , cur->c , ptr, mxptr , cur_size);
+    if ( cur->sp == 1 ) {
+        com_sp(cur , ptr , mxptr , cur_size);
+    } else {
+        command(cur , cur->c , ptr , mxptr , cur_size);
+    }
 }
