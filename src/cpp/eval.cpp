@@ -24,7 +24,16 @@ int fact(int n) {
 }
 
 int pow(int base, int exp) {
-    return !exp ? 1 : base*pow(base,exp-1);
+    return !exp ? 1 : base*pow(base , exp-1);
+}
+
+int sqrt(int n) {
+    int i = 0;
+    while ( i*i <= n ) {
+        i++;
+    }
+    i--;
+    return i;
 }
 
 int command(node * , char , int, int, int);
@@ -138,6 +147,6 @@ void evaluate(node *cmd) {
     if ( cur->sp == 1 ) {
         com_sp(cur , ptr , mxptr , cur_size);
     } else {
-        command(cur , cur->c , ptr , mxptr , cur_size);
+       command(cur , cur->c , ptr , mxptr , cur_size);
     }
 }
