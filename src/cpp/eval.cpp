@@ -1,4 +1,9 @@
 #include "eval.hpp"
+#include<stdio.h>
+#include<vector>
+#include<algorithm>
+#include<string>
+#include<math.h>
 
 
 /*
