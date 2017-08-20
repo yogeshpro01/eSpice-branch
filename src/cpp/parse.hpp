@@ -6,17 +6,28 @@
  * Look at the document for an example
  * */
 
- #include <stddef.h>
+#include <stddef.h>
+#include<iostream>
+#include<stdlib.h>
+#include<stack>
+#include<map>
 
 struct node {
     char c;
+    int sp;
+    char fc[4];
+    int a,b,cs;
     node *l , *r;
     node() {
         l = NULL; r = NULL;
     }
  };
 
-bool validate(char *code);
-node **parse(char *code);
+bool validate(char *code, int sz);
+node *parse(char *code, int sz);
+node *parse_sp(node *x, char *code);
+bool val_sp(char *code, int sz, int cur);
+int skp(char code);
+bool cm(char c);
 
 #endif
