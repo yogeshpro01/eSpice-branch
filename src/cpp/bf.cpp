@@ -217,7 +217,13 @@ void drive() {
    }
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argv[0] == "--help" ) {
+        help(1);
+    }
+    if (argv[0] == "repl" ) {
+        rep();
+    }
     printf("WELCOME TO THE BRAINFSDF PROGRAM: (--help for HELP) \n");
     drive();
 }
