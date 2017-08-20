@@ -7,10 +7,6 @@
  * */
 
 #include <stddef.h>
-#include<iostream>
-#include<stdlib.h>
-#include<stack>
-#include<map>
 
 struct node {
     char c;
