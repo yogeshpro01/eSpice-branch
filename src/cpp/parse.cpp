@@ -1,4 +1,8 @@
 #include "parse.hpp"
+#include<iostream>
+#include<stdlib.h>
+#include<stack>
+#include<map>
 
 
 // Copyright 2017 Yogesh Aggarwal
